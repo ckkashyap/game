@@ -1,14 +1,29 @@
-var createjs = {
-    var Stage = function() {}
-    var Shape= function () {
-	var graphics =function() {
-	    var beginFill = function (a) {
-		var drawCircle = function (a,b,c,d) {}
-	    }
-	}
-    };
+var createjs = {}
+
+createjs.Shape = function() {
 }
 
-var x = createjs.Shape().graphics.beginFill("A").drawCircle(1,2,3,4)
+createjs.Stage = function(a) {
+    return {
+	addChild: function(o) {
+	},
+	update: function() {
+	}
+    }
+}
 
-var beginFill={}
+var graphics= {}
+
+graphics.beginFill=function(a) {
+    return {
+	drawCircle: function (a, b, c, d) {
+	}
+    }
+}
+
+graphics.beginFill("A").drawCircle(1,2,3,4);
+
+createjs.Stage("A").addChild("A");
+
+createjs.Stage("A").update();
+
