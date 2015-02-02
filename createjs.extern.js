@@ -12,6 +12,11 @@ createjs.Stage = function(a) {
     }
 }
 
+var Ticker={}
+
+Ticker.addEventListener = function (p1, p2) {
+}
+
 var graphics= {}
 
 graphics.beginFill=function(a) {

@@ -7,19 +7,28 @@
 
 (enable-console-print!)
 
-(def stage)
+(defn timerFunc [state]
+  (let
+      [
+       x     (:x state)
+       ]
+  (println x)
+  (println "HELLO")
+  (assoc state :x (+ x 1))))
 
 (defn ^:export init []
   (let [
-        _ (set! stage (new  js/createjs.Stage "demoCanvas"))
-        c (new js/createjs.Shape)
-        a1 (.drawCircle (.beginFill (.-graphics c) "Blue") 0 5 50)
-        a2 (set! (.-x c) 100)
-        a3 (set! (.-y c) 100)
-        a4 (.addChild stage c)
-        a5 (.update stage)
+        stage (createjs/newStage "demoCanvas")
+        c (createjs/drawCircle 0 5 50 "Red")
+        _ (set! (.-x c) 100)
+        _ (set! (.-y c) 100)
+        _ (.addChild stage c)
+        _ (.update stage)
+
         ]
-  (js/alert (createjs/dingo))))
+    (def state {:stage stage :x 0})
+    (.addEventListener (.-Ticker js/createjs) "tick" (fn [] (set! state (timerFunc state))))
+    ))
 
 
 
