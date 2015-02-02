@@ -10,7 +10,7 @@
   (let [
         s (new  js/createjs.Stage "demoCanvas")
         c (new js/createjs.Shape)
-        a1 (.drawCircle (.beginFill (.. c -graphics) "Green") 0 5 50)
+        a1 (.drawCircle (.beginFill (.-graphics c) "Blue") 0 5 50)
         a2 (set! (.-x c) 100)
         a3 (set! (.-y c) 100)
         a4 (.addChild s c)
