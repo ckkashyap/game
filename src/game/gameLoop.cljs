@@ -1,4 +1,8 @@
-(ns game.gameLoop)
+(ns game.gameLoop
+  (:require
+   [game.createjs :as createjs]
+  )
+)
 
 
 (defn loopFunction [state]
@@ -6,7 +10,8 @@
       [
        circle (:circle state)
        y (.-y circle)
+       c (:counter state)
        _ (set! (.-y circle) (if (> y 200)  5 (+ 10 y)))
        ]
-  (println y)
+  (println c)
   state))

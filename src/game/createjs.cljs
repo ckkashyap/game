@@ -4,8 +4,18 @@
 (defn newStage [canvas]
   (new  js/createjs.Stage canvas))
 
-(defn newShape []
-  (new js/createjs.Shape))
+(defn newShape 
+  ([]  (new js/createjs.Shape))
+  ([g] (new js/createjs.Shape g))
+)
+
+(defn newBitmap
+  ([n] (new js/createjs.Bitmap n))
+)
+
+
+(defn newGraphics []
+  (new js/createjs.Graphics))
 
 (defn drawCircle [x y r c]
   (let [shape (newShape)]
@@ -15,7 +25,7 @@
 (defn addChild [s c]
   (.addChild s c))
 
-(defn update [s]
+(defn updateStage [s]
   (.update s))
 
 

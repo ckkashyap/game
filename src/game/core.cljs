@@ -7,23 +7,50 @@
 
 (enable-console-print!)
 
+(def globalNumberOfTracks 7)
+
+(defn initializeScreen [stage canvas numberOfTracks]
+  (let
+      [
+       width (.-width canvas)
+       height (.-width canvas)
+       trackWidth (/ width numberOfTracks)
+       ]
+    (dotimes [i numberOfTracks]
+      (let [
+            g (createjs/newGraphics)
+            s (createjs/newShape g)
+            ]
+        (.drawRect (.beginFill (.beginStroke g "#F00") "#00F") (* trackWidth i) 0 (* trackWidth ( + i 1)) height)
+        (.addChild stage s)
+       ))))
+
 (defn ^:export init []
   (let [
         stage (createjs/newStage "demoCanvas")
-        c (createjs/drawCircle 100 5 50 "Red")
+        canvas (.getElementById js/document "demoCanvas")
+        c (createjs/drawCircle 100 5 50 "White")
+        _ (initializeScreen stage canvas globalNumberOfTracks)
         _ (createjs/addChild stage c)
-        _ (createjs/update stage)
+        _ (createjs/updateStage stage)
 
         ]
-    (def state {:stage stage :circle c})
+    (def state {
+                :stage stage
+                :circle c
+                :canvas canvas
+                :counter 0
+                })
     (createjs/addEventListener "tick"
                        (fn []
-                         (set! state (gameloop/loopFunction state))
-                         (createjs/update stage)
+                         (set! state 
+                               (let [ 
+                                     counter (:counter state)
+                                     oldState (gameloop/loopFunction state)
+                                     ] 
+                                 (assoc oldState :counter (+ 1 counter))))
+                         (createjs/updateStage stage)
                          )
                        )
     ))
 
-
-
-(println "Hello world!")

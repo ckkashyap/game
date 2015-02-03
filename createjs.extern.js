@@ -3,6 +3,13 @@ var createjs = {}
 createjs.Shape = function() {
 }
 
+
+createjs.Graphics=function() {
+}
+
+createjs.Bitmap=function(a){
+}
+
 createjs.Stage = function(a) {
     return {
 	addChild: function(o) {
@@ -17,18 +24,21 @@ var Ticker={}
 Ticker.addEventListener = function (p1, p2) {
 }
 
-var graphics= {}
 
-graphics.beginFill=function(a) {
+
+createjs.graphics.beginFill=function(a) {
     return {
 	drawCircle: function (a, b, c, d) {
 	}
     }
 }
 
-graphics.beginFill("A").drawCircle(1,2,3,4);
+
+createjs.graphics.beginFill("A").drawCircle(1,2,3,4);
 
 createjs.Stage("A").addChild("A");
 
 createjs.Stage("A").update();
 
+
+createjs.graphics.beginStroke("A").beginFill("A").drawRect(0,1,2,3);
