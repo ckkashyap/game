@@ -20,16 +20,16 @@
 (defn ^:export init []
   (let [
         stage (createjs/newStage "demoCanvas")
-        c (createjs/drawCircle 100 5 50 "Red")
-        _ (.addChild stage c)
-        _ (.update stage)
+        c (createjs/drawCircle 100 5 50 "Green")
+        _ (createjs/addChild stage c)
+        _ (createjs/update stage)
 
         ]
     (def state {:stage stage :circle c})
-    (.addEventListener (.-Ticker js/createjs) "tick"
+    (createjs/addEventListener "tick"
                        (fn []
                          (set! state (timerFunc state))
-                         (.update stage)
+                         (createjs/update stage)
                          )
                        )
     ))
