@@ -31,16 +31,17 @@
         ] img))
   
 
-(defn newPoliceCar [state x v]
+(defn newPoliceCar [state l v]
   (let
       [
+       x (* (width) l)
        stage (:stage state)
        canvas (:canvas state)
        img (createImage)
        _ (set! (.-x img) x)
        _ (createjs/addChild stage img)
        ]
-    {:velocity v :image img}
+    {:velocity v :image img :lane l}
 ))
     
        
@@ -48,9 +49,15 @@
 (defn width []
   (let [
         img (createImage)
+        b (.getBounds img)
+        w (if b (.-width b) 0)
         ] 
-    (println "width = ")
-;    (println (.-width (.getBounds img)))
+    (println "width === ")
+    (println b)
+    (println "width +++ ")    
     100
 ))
 
+
+
+(createImage)

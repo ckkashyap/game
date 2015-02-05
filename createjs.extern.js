@@ -8,6 +8,14 @@ createjs.Graphics=function() {
 }
 
 createjs.Bitmap=function(a){
+    return {
+	getBounds: function () {
+	    return {
+		width: 1
+	    }
+	}
+    }
+
 }
 
 

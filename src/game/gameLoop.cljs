@@ -12,8 +12,10 @@
        police  (if (:police state) (:police state) {:count 0})
        ctr     (:count police)
        cars    (filter police/isCarValid (if (:cars police) (:cars police) []))
+       occupied-lanes (into #{} (map :lane cars))
        _       (doall (map police/moveCar cars))
-       new-car (if (and (= (mod c 5) 0)) (police/newPoliceCar state (* (police/width) (* 6 (rand))) (+ 2 (* 5 (rand)))) nil )
+       lane (int (* 6 (rand)))
+       new-car (if (and (not (occupied-lanes lane))(= (mod c 5) 0)) (police/newPoliceCar state  lane (+ 2 (* 5 (rand)))) nil )
        ]
 
     (println (count cars))
