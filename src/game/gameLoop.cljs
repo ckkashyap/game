@@ -13,7 +13,7 @@
        ctr     (:count police)
        cars    (filter police/isCarValid (if (:cars police) (:cars police) []))
        _       (doall (map police/moveCar cars))
-       new-car (if (and (= (mod c 5) 0)) (police/newPoliceCar state (* 80 (* 6 (rand))) (+ 2 (* 5 (rand)))) nil )
+       new-car (if (and (= (mod c 5) 0)) (police/newPoliceCar state (* (police/width) (* 6 (rand))) (+ 2 (* 5 (rand)))) nil )
        ]
 
     (println (count cars))

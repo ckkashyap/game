@@ -30,7 +30,6 @@
         stage (createjs/newStage "demoCanvas")
         canvas (.getElementById js/document "demoCanvas")
         _ (initializeScreen stage canvas globalNumberOfTracks)
-        _ (createjs/addChild stage c)
         _ (createjs/updateStage stage)
 
         ]

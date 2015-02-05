@@ -4,6 +4,10 @@
   )
 )
 
+(def carImagePath "images/police.png")
+
+(def scaleFactor 0.2)
+
 (defn moveCar [car]
   (let [
         v   (:velocity car)
@@ -19,15 +23,20 @@
   (< (.-y (:image car)) 200))
 
 
+(defn createImage []
+  (let [
+       img (createjs/newBitmap carImagePath)
+       _ (set! (.-scaleX img) scaleFactor)
+       _ (set! (.-scaleY img) scaleFactor)
+        ] img))
+  
 
 (defn newPoliceCar [state x v]
   (let
       [
        stage (:stage state)
        canvas (:canvas state)
-       img (createjs/newBitmap "images/police.png")
-       _ (set! (.-scaleX img) 0.2)
-       _ (set! (.-scaleY img) 0.2)
+       img (createImage)
        _ (set! (.-x img) x)
        _ (createjs/addChild stage img)
        ]
@@ -36,3 +45,12 @@
     
        
        
+(defn width []
+  (let [
+        img (createImage)
+        ] 
+    (println "width = ")
+;    (println (.-width (.getBounds img)))
+    100
+))
+

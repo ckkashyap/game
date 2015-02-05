@@ -13,6 +13,7 @@ createjs.Bitmap=function(a){
 
 createjs.Bitmap("A").scaleX = 1;
 createjs.Bitmap("A").scaleY = 1;
+createjs.Bitmap("A").getBounds().width = 1;
 
 createjs.Stage = function(a) {
     return {
