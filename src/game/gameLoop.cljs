@@ -8,10 +8,7 @@
 (defn loopFunction [state]
   (let
       [
-       circle  (:circle state)
-       y       (.-y circle)
        c       (:counter state)
-       _       (set! (.-y circle) (if (> y 200)  5 (+ 10 y)))
        police  (if (:police state) (:police state) {:count 0})
        ctr     (:count police)
        cars    (filter police/isCarValid (if (:cars police) (:cars police) []))

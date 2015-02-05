@@ -29,7 +29,6 @@
   (let [
         stage (createjs/newStage "demoCanvas")
         canvas (.getElementById js/document "demoCanvas")
-        c (createjs/drawCircle 100 5 50 "White")
         _ (initializeScreen stage canvas globalNumberOfTracks)
         _ (createjs/addChild stage c)
         _ (createjs/updateStage stage)
@@ -37,7 +36,6 @@
         ]
     (def state {
                 :stage stage
-                :circle c
                 :canvas canvas
                 :counter 0
                 })
