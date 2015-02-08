@@ -10,13 +10,16 @@
 
 (defn moveCar [car]
   (let [
+        t  (:ticker car)
+        nt (if (= t 21) 0 (+ 1 t))
         v   (:velocity car)
         img (:image car)
         y   (.-y img)
-        ny  (if (> (+ y v) 200) 200 (+ y v))
+        ny  (if (= 10 nt) (if (> (+ y v) 200) 200 (+ y 50)) y)
         ]
     (if (= ny 200) (set! (.-visible img) false))
     (set! (.-y img) ny)
+    (assoc car :ticker nt)
 )) 
 
 (defn isCarValid [car]
@@ -53,11 +56,8 @@
        _ (set! (.-x img) x)
        _ (createjs/addChild stage img)
        ]
-    {:velocity v :image img :lane l}
+    {:velocity v :image img :lane l :ticker 0}
 ))
     
        
-       
 
-
-(createImage)
