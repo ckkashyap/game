@@ -30,6 +30,18 @@
        _ (set! (.-scaleY img) scaleFactor)
         ] img))
   
+(defn width []
+  (let [
+        img (createImage)
+        b (.getBounds img)
+        w (if b (.-width b) 0)
+        ] 
+    (println "width === ")
+    (println b)
+    (println "width +++ ")    
+    100
+))
+
 
 (defn newPoliceCar [state l v]
   (let
@@ -46,18 +58,6 @@
     
        
        
-(defn width []
-  (let [
-        img (createImage)
-        b (.getBounds img)
-        w (if b (.-width b) 0)
-        ] 
-    (println "width === ")
-    (println b)
-    (println "width +++ ")    
-    100
-))
-
 
 
 (createImage)

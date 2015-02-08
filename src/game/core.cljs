@@ -2,6 +2,7 @@
   (:require
    [game.gameLoop :as gameloop]
    [game.createjs :as createjs]
+   [game.consts :as consts]
   )
 )
 
@@ -29,6 +30,7 @@
   (let [
         stage (createjs/newStage "demoCanvas")
         canvas (.getElementById js/document "demoCanvas")
+        _ (set! (.-width canvas) (consts/screen-width))
         _ (initializeScreen stage canvas globalNumberOfTracks)
         _ (createjs/updateStage stage)
 
